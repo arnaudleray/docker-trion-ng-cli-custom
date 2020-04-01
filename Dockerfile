@@ -8,9 +8,9 @@
 #alternative to reduce size instead of alpine, but does not
 #include build tools for native compilation of npm packages
 #we therefore add gcc
-FROM node:12-slim
+FROM node:8.6.0-slim
 
-MAINTAINER trion development GmbH "info@trion.de"
+MAINTAINER Arnaud Leray "arnaud.leray@niji.fr"
 
 ARG USER_HOME_DIR="/tmp"
 ARG APP_DIR="/app"
@@ -41,7 +41,7 @@ RUN apt-get update && apt-get install -qqy --no-install-recommends \
     openssh-client \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ARG NG_CLI_VERSION=8.0.1
+ARG NG_CLI_VERSION=5.2.4
 LABEL angular-cli=$NG_CLI_VERSION node=$NODE_VERSION
 
 # npm 5 uses different userid when installing packages, as workaround su to node when installing
